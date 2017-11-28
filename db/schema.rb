@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 20171128135004) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "contact_event_types", force: :cascade do |t|
     t.string "name", null: false
     t.datetime "created_at", null: false
@@ -23,8 +26,8 @@ ActiveRecord::Schema.define(version: 20171128135004) do
     t.datetime "scheduled_for"
     t.datetime "occurred_at"
     t.float "quality"
-    t.integer "person_id"
-    t.integer "contact_event_type_id"
+    t.bigint "person_id"
+    t.bigint "contact_event_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_event_type_id"], name: "index_contact_events_on_contact_event_type_id"
@@ -41,8 +44,8 @@ ActiveRecord::Schema.define(version: 20171128135004) do
     t.string "content", null: false
     t.string "details"
     t.boolean "primary", null: false
-    t.integer "person_id"
-    t.integer "contact_info_type_id"
+    t.bigint "person_id"
+    t.bigint "contact_info_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["contact_info_type_id"], name: "index_contact_infos_on_contact_info_type_id"
@@ -54,7 +57,7 @@ ActiveRecord::Schema.define(version: 20171128135004) do
     t.string "last_name", null: false
     t.string "nickname"
     t.float "priority", null: false
-    t.integer "relationship_type_id"
+    t.bigint "relationship_type_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["relationship_type_id"], name: "index_people_on_relationship_type_id"
@@ -66,4 +69,9 @@ ActiveRecord::Schema.define(version: 20171128135004) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "contact_events", "contact_event_types"
+  add_foreign_key "contact_events", "people"
+  add_foreign_key "contact_infos", "contact_info_types"
+  add_foreign_key "contact_infos", "people"
+  add_foreign_key "people", "relationship_types"
 end
