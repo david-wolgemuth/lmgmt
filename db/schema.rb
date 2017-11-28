@@ -55,7 +55,7 @@ ActiveRecord::Schema.define(version: 20171128135004) do
   create_table "people", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
-    t.string "nickname"
+    t.string "display_name"
     t.float "priority", null: false
     t.bigint "relationship_type_id"
     t.datetime "created_at", null: false
