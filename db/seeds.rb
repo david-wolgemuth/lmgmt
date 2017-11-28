@@ -5,3 +5,16 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+RelationshipType.create([
+    'IMMEDIATE_FAMILY', 'FRIEND', 'EXTENDED_FAMILY', 'COWORKER', 'NETWORK'
+  ].map{|n| {name: n} }
+)
+ContactInfoType.create([
+    'PHONE_NUMBER', 'ADDRESS', 'EMAIL_ADDRESS', 'FACEBOOK', 'SKYPE', 'FACETIME'
+  ].map{|n| {name: n} }
+)
+ContactEventType.create([
+    'CALL', 'RESTAURANT', 'GET_TOGETHER'
+  ].map{|n| {name: n} }
+)

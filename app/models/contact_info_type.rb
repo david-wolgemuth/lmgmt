@@ -1,0 +1,2 @@
+class ContactInfoType < ApplicationRecord
+end

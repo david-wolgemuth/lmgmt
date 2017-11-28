@@ -1,0 +1,2 @@
+class ContactEventType < ApplicationRecord
+end
